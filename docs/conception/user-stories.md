@@ -15,3 +15,4 @@ Dans ce genre de projet comme je l'imagine ont à clients(visiteurs)  et admin.
 | client | je veux voir toute les promos sur une page | --- | --- |
 | client | je veux avoir les contact | retrouver facilement la boutique | --- |
 | client | je veux une categories services | --- | --- |
+|client | je veux avoir en temps réel les horaire d'ouverture | --- | --- |
