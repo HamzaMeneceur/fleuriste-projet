@@ -25,7 +25,7 @@ CREATE TABLE "admin" (
     "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "firstname" VARCHAR(50),
     "lastname" VARCHAR(50),
-    "email" VARCHAR(30) UNIQUE,
+    "email" VARCHAR(50) UNIQUE,
     "password" VARCHAR(50),
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     "updated_at" TIMESTAMPTZ
