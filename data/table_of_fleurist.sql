@@ -37,8 +37,8 @@ CREATE TABLE "item" (
     "price" FLOAT NOT NULL DEFAULT 0,
     "color" VARCHAR(50),
     "description" TEXT NOT NULL DEFAULT '',
-    "category_id" INTEGER NOT NULL REFERENCES category("id") ON DELETE CASCADE,
-    "admin_id" INTEGER NOT NULL REFERENCES admin("id") ON DELETE CASCADE,
+    "category_id" INTEGER REFERENCES category("id") ON DELETE CASCADE,
+    "admin_id" INTEGER REFERENCES admin("id") ON DELETE CASCADE,
     "created_at" TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     "updated_at" TIMESTAMPTZ
 );
