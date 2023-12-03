@@ -57,3 +57,9 @@ methode DELETE :
 </details>
 
 ### En cours de production
+
+Pour les images lié à la bdd de item.img, j'ai deux options ou je stock dans le static avec un chemin ex: /img/rose.jpg ou j'utilise multer.
+
+<details><summary>Multer - Documentations</summary>
+https://www.npmjs.com/package/multer
+</details>
