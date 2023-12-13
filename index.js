@@ -7,6 +7,8 @@ const router = require('./app/router');
 const PORT = process.env.URL || 4000;
 
 app.use(express.urlencoded({extended: true}));
+app.use(express.json())
+
 app.use(cors('*'))
 app.use(sanitizerR)
 app.use(router);
