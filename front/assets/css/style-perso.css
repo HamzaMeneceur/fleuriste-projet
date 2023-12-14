@@ -2,16 +2,26 @@
 .container-top{
     height: 2rem;
 }
-
 .container-bot{
-    height: 200px;
+    height: 15rem;
     display: flex;
-    justify-content: center;
-    align-items: end;
+    align-items: center;
+    
+}
+nav{
+    background-color: beige;
 }
 .container-category{
     display: flex;
     justify-content: space-around;
     width: 80%;
     margin-bottom: 0.5rem;
+    justify-self: center;
+    align-self: end;
+}
+.container-bot-title{
+    display: flex;
+    font-size:1.5rem;
+    text-align: center;
+    background-color: blue;
 }
