@@ -1,0 +1,9 @@
+BEGIN;
+
+CREATE OR REPLACE FUNCTION get_all_categories() RETURNS SETOF category AS $$
+
+SELECT * FROM category;
+
+$$ LANGUAGE sql SECURITY DEFINER;
+
+COMMIT;

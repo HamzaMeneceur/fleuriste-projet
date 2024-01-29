@@ -1,15 +1,12 @@
 const { Category } = require('../models');
-
+const {categoryDataMappers} = require('../dataMappers');
+const { manageResponse } = require('../helper/controllerHelper')
 const categoryController = {
-    async getAllCategories(req,res) {
-        try{
-            const found = await Category.findAll();
-            res.status(200).json(found)
-        }
-        catch(error){
-            console.log(error);
-            res.status(500).json({message:'error serveur go on terminal'})
-        }
+    async getAllCategories(req,res,next) {
+        const {error,result} = await categoryDataMappers.getAll();
+
+        manageResponse(res,result,error,next)
+
     },
     async getOneCategory(req,res) {
         try{
