@@ -1,36 +1,26 @@
 const { Item, Category } = require('../models');
+const {itemDataMappers} = require('../dataMappers');
+const { manageResponse } = require('../helper/controllerHelper');
 
 const itemController = {
-    async getAllItems(req,res) {
-        try{
-        const found = await Item.findAll({include:'categories'});
-        res.status(200).json(found);
-        }
-        catch(error){
-            console.log(error);
-            res.status(500).json({message:'error serveur go on terminal'})
-        }
+    async getAllItems(req,res,next) {
+        const {error,result} = await itemDataMappers.getAll();
+
+        manageResponse(res,result,error,next)
     },
-    async getOneItem(req,res) {
-        try{
+    async getOneItem(req,res,next) {
             const {id} = req.params;
-            const found = await Item.findByPk(id, {include:'categories'});
-            res.status(200).json(found)
-        }
-        catch{
-            console.log(error);
-            res.status(500).json({message:'error serveur go on terminal'});
-        }
+
+            const {error,result} = await itemDataMappers.getOne(id);
+
+            manageResponse(res,result,error,next)
     },
-    async createItem(req,res) {
-        try{
-            const create = await Item.create({...req.body});
-            res.status(201).json(create)
-        }
-        catch(error){
-            console.log(error);
-            res.status(500).json({message:'error serveur go on terminal'});
-        }
+    async createItem(req,res,next) {
+        const item = req.body
+
+        const {error,result} = await itemDataMappers.create(item);
+
+        manageResponse(res,result,error,next)
     },
     async deleteItem(req,res){
         try{

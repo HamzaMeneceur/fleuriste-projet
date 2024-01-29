@@ -53,4 +53,22 @@ SET name = v->>'name',
 RETURNING *;
 $$ LANGUAGE sql SECURITY DEFINER;
 -- ! FIN
+-- ! CREATE FUNCTION ITEM MAJ PREVU SUR CREATE CATEGORY
+CREATE OR REPLACE FUNCTION create_item(u json) RETURNS item AS $$
+
+INSERT INTO item
+(img,price, color,description,category_id,admin_id,created_at)
+VALUES
+(
+	U->>'img',
+	(u->>'price')::float,
+	u->>'color',
+	u->>'description',
+	(u->>'category_id')::int,
+	(u->>'admin_id')::int,
+	now()
+)
+RETURNING *;
+$$ LANGUAGE sql SECURITY DEFINER;
+-- ! FIN
 COMMIT;
