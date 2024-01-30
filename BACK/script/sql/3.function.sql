@@ -18,14 +18,13 @@ $$ LANGUAGE sql SECURITY DEFINER;
 CREATE OR REPLACE FUNCTION create_category(u json) RETURNS category AS $$
 
 INSERT INTO category
-(name,description, caracteristique,created_at,updated_at)
+(name,description, caracteristique,created_at)
 VALUES
 (
 	U->>'name',
 	u->>'description',
 	u->>'caracteristique',
-	(u->>'created_at')::timestamptz,
-	(u->>'updated_at')::timestamptz 
+	now()
 )
 RETURNING *;
 $$ LANGUAGE sql SECURITY DEFINER;
@@ -53,7 +52,7 @@ SET name = v->>'name',
 RETURNING *;
 $$ LANGUAGE sql SECURITY DEFINER;
 -- ! FIN
--- ! CREATE FUNCTION ITEM MAJ PREVU SUR CREATE CATEGORY
+-- ! DEBUT FUNCTION
 CREATE OR REPLACE FUNCTION create_item(u json) RETURNS item AS $$
 
 INSERT INTO item
@@ -71,4 +70,12 @@ VALUES
 RETURNING *;
 $$ LANGUAGE sql SECURITY DEFINER;
 -- ! FIN
+-- !
+CREATE OR REPLACE FUNCTION delete_item(u int) RETURNS item AS $$
+
+DELETE FROM item
+	WHERE id = u
+
+RETURNING *;
+$$ LANGUAGE sql SECURITY DEFINER;
 COMMIT;

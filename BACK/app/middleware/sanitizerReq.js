@@ -1,6 +1,6 @@
 const sanitizer = require('sanitizer');
 
-const sanitizerR = (req,res,next) => {
+const sanitizerR = (req,_,next) => {
     if(req.body) {
         for(let property in req.body){
             console.log('Je suis la');

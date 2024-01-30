@@ -24,8 +24,4 @@ router.delete('/item/:id', itemController.deleteItem);
 // Modification d'un item
 router.patch('/item/:id', itemController.updateItem);
 
-// Associé un item sur une catégory
-router.post('/item/:id/category/:catId', itemController.linkOfItemCategory)
-// Suprimer l'association ciblé
-router.delete('/item/:id/category/:catId', itemController.deleteOfItemCategory)
 module.exports = router
