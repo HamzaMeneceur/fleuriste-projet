@@ -21,16 +21,13 @@ async executeRequest(sqlQuery,values){
     }
     
     return { result,error };
-}
-};
+},
 
 /**
  * Fonction générique qui retourne la première ligne d'une requête SQL
  * @param {*} sqlQuery
  * @returns
  */
-
-module.exports = {
 async executeRequestWithSingleResult(sqlQuery,values){
     let result;
     let error;
@@ -45,4 +42,4 @@ async executeRequestWithSingleResult(sqlQuery,values){
 
     return { result,error }
 }
-}
+};
