@@ -13,7 +13,7 @@ const itemDataMappers = {
     },
     async create(item){
         const sqlQuery = "SELECT * FROM create_item($1);";
-        const values = [category];
+        const values = [item];
         return executeRequestWithSingleResult(sqlQuery,values);
     },
     async delete(id){
@@ -23,7 +23,7 @@ const itemDataMappers = {
     },
     async update({id,item}){
         const sqlQuery = "SELECT * FROM update_item($1,$2);";
-        const values = [id,category];
+        const values = [id,item];
         return executeRequestWithSingleResult(sqlQuery,values);
     }
 };

@@ -78,4 +78,20 @@ DELETE FROM item
 
 RETURNING *;
 $$ LANGUAGE sql SECURITY DEFINER;
+-- !
+CREATE OR REPLACE FUNCTION update_item(u int,v json) RETURNS item AS $$
+
+UPDATE item
+SET img = v->>'img',
+	price = (v->>'price')::float,
+	description = v->>'caracteristique',
+	category_id = (v->>'category_id')::int,
+	admin_id = (v->>'admin_id')::int,
+	updated_at = now()
+
+	WHERE id = u
+
+RETURNING *;
+$$ LANGUAGE sql SECURITY DEFINER;
+
 COMMIT;
